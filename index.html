@@ -1,14 +1,55 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Cesium Ion Viewer</title>
+    <meta charset="utf-8">
+    <!-- Include the CesiumJS JavaScript and CSS files -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        background-color: rgb(226, 226, 226);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .header {
+        width: 80%;
+        margin: 0 auto;
+        background-color: rgb(208, 247, 255);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+</style>
+
 <body>
-    <div id="cesiumViewer">
-        <!-- Paste your embedded code here -->
-        <iframe title="Konstanz" width="1024" height="576" src="https://ion.cesium.com/stories/viewer/?id=46707992-72fd-4424-ba50-2ff60bacdc96" frameborder="0" allow="fullscreen" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <div class="header">
+        <h1>Test Cesium Story</h1>
+        <p>Location: Konstanz</p>
+    </div>
+
+    <div class="container">
+        <h1>Cesium Map</h1>
+        <div id="cesiumContainer" style="width: 100%; height: 60vh;"></div>
+
+        <div id="buttons">
+            <button onclick="setCameraView1()">Overview</button>
+            <button onclick="setCameraView2()">Domain: Child II</button>
+            <button onclick="setCameraView3()">Augustinerplatz</button>
+            <button onclick="setCameraView4()">Markstaette</button>
+            <button onclick="setCameraView5()">St. Stephansplatz</button>
+        </div>
+        <script src="js/cesium.js"></script>
     </div>
 </body>
-</html>
+</html
+
+

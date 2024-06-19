@@ -105,15 +105,12 @@ function setCameraView1() {
 function setCameraView2() {
   viewer.dataSources.removeAll();
   viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(9.18792885, 47.65296196, 1421.47700275),
+    destination: Cesium.Cartesian3.fromDegrees(9.186055400, 47.654164996, 1335.63201586),
     orientation: {
-      heading: Cesium.Math.toRadians(317.14612725),
-      pitch: Cesium.Math.toRadians(-35.70011564),
+      heading: Cesium.Math.toRadians(317.1461271312),
+      pitch: Cesium.Math.toRadians(-35.7001158181),
       roll: 0.0
     },
-    // complete: function(){
-      // addGeoJsonDataSource(viewer, geoJsonUrl_aoi_child_ii, heightValue=256*1, colorValue='rgba(0, 255, 0, 0.4)');
-    // }
   });
   addGeoJsonDataSource(viewer, geoJsonUrl_aoi_child_ii, heightValue=256*1, colorValue='rgba(0, 255, 0, 0.4)');
   addGeoJsonBuildingsDataSource(viewer, geoJsonUrl_buildings, heightValue=10, colorValue='rgba(150, 150, 200)');
@@ -127,7 +124,7 @@ function setCameraView3() {
     orientation: {
       heading: Cesium.Math.toRadians(277.1502153),
       pitch: Cesium.Math.toRadians(-42.7021187399),
-      roll: 0.0000048538
+      roll: 0.0
     }
   });
   addGeoJsonBuildingsDataSource(viewer, geoJsonUrl_buildings, heightValue=10, colorValue='rgba(150, 150, 200)');
@@ -137,11 +134,11 @@ function setCameraView3() {
 function setCameraView4() {
   viewer.dataSources.removeAll();
   viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(9.177822677, 47.66052656, 577.129118408),
+    destination: Cesium.Cartesian3.fromDegrees(9.178558714, 47.660707968, 573.70736867),
     orientation: {
-      heading: Cesium.Math.toRadians(264.0737670),
-      pitch: Cesium.Math.toRadians(-39.20111778),
-      roll: 0.00022738
+      heading: Cesium.Math.toRadians(262.470633429),
+      pitch: Cesium.Math.toRadians(-38.0362514439),
+      roll: 0.0
     }
   });
   addGeoJsonBuildingsDataSource(viewer, geoJsonUrl_buildings, heightValue=10, colorValue='rgba(150, 150, 200)');
@@ -151,11 +148,11 @@ function setCameraView4() {
 function setCameraView5() {
   viewer.dataSources.removeAll();
   viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(9.1739598, 47.66092487675, 584.36335433),
+    destination: Cesium.Cartesian3.fromDegrees(9.17458559106, 47.66100593136, 603.499105),
     orientation: {
-      heading: Cesium.Math.toRadians(347.00998265),
-      pitch: Cesium.Math.toRadians(-43.86954199),
-      roll: 0.00022738
+      heading: Cesium.Math.toRadians(336.38809296),
+      pitch: Cesium.Math.toRadians(-53.770967772),
+      roll: 0.0
     }
   });
   addGeoJsonBuildingsDataSource(viewer, geoJsonUrl_buildings, heightValue=10, colorValue='rgba(150, 150, 200)');

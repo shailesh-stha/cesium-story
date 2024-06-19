@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <!-- Include the CesiumJS JavaScript and CSS files -->
@@ -6,29 +7,8 @@
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    .container {
-        width: 80%;
-        margin: 0 auto;
-        background-color: rgb(226, 226, 226);
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    .header {
-        width: 80%;
-        margin: 0 auto;
-        background-color: rgb(208, 247, 255);
-        padding: 10px;
-        box-sizing: border-box;
-    }
-</style>
 
 <body>
     <div class="header">
@@ -38,18 +18,18 @@
 
     <div class="container">
         <h1>Cesium Map</h1>
-        <div id="cesiumContainer" style="width: 100%; height: 60vh;"></div>
+        <div id="cesiumContainer" style="width: 80%; height: 60vh;">
+            <script src="./js/index.js" type="module"></script>
+        </div>
 
         <div id="buttons">
             <button onclick="setCameraView1()">Overview</button>
             <button onclick="setCameraView2()">Domain: Child II</button>
-            <button onclick="setCameraView3()">Augustinerplatz</button>
+            <button onclick="setCameraView3_1()">Augustinerplatz</button>
             <button onclick="setCameraView4()">Markstaette</button>
             <button onclick="setCameraView5()">St. Stephansplatz</button>
         </div>
-        <script src="js/cesium.js"></script>
     </div>
 </body>
+
 </html
-
-

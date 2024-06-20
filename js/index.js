@@ -5,7 +5,8 @@ Cesium.Ion.defaultAccessToken = myAccessToken;
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Cesium.Viewer("cesiumContainer", {
-  terrain: Cesium.Terrain.fromWorldTerrain(),
+  globe: false, // False for Google Maps API
+  // terrain: Cesium.Terrain.fromWorldTerrain(),
   animation: false, // Disable animation controls
   timeline: false, // Disable timeline controls
   geocoder: false, // Disable the search box
@@ -17,6 +18,13 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
   selectionIndicator: false, // Enable or disable selection indicator
   creditContainer: document.createElement("div"), // Hide Cesium Ion logo
 });
+
+try {
+  const tileset = await Cesium.createGooglePhotorealistic3DTileset();
+  viewer.scene.primitives.add(tileset);
+} catch (error) {
+  console.log(`Failed to load tileset: ${error}`);
+}
 
 // Directly set the camera at the given longitude, latitude, and height.
 viewer.camera.setView({
@@ -58,8 +66,6 @@ trees.features.forEach((feature) => {
   );
 });
 
-
-
 // Define function to display GeoJSON file
 function addGeoJsonDataSource(
   viewer,
@@ -80,10 +86,10 @@ function addGeoJsonDataSource(
       var entity = entities[i];
       var polygon = entity.polygon;
       if (polygon) {
-        polygon.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
+        polygon.heightReference = Cesium.HeightReference.RELATIVE_TO_3D_TILE;
         polygon.extrudedHeight = extrudedHeight; // Set extruded height
         polygon.extrudedHeightReference =
-          Cesium.HeightReference.RELATIVE_TO_GROUND;
+          Cesium.HeightReference.RELATIVE_TO_3D_TILE;
         polygon.material =
           Cesium.Color.fromCssColorString(polygonColor).withAlpha(0.4); // Set polygon color
       }
@@ -171,7 +177,7 @@ function setCameraView1() {
 function setCameraView2() {
   dataSource_aoi_child_i.show = false;
   dataSource_aoi_child_ii.show = true;
-  dataSource_buildings.show = true;
+  dataSource_buildings.show = false;
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(
       9.1860554,

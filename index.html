@@ -32,7 +32,7 @@
                 <div id="cesiumContainer" style="width: 100%; height: 75vh;"></div>
             </div>
 
-            <div class="col-12 col-md-4 scrollable-content" style="background-color: rgb(255, 255, 255);">
+            <div class="col-12 col-md-4" style="background-color: rgb(255, 255, 255);">
                 <p>Information Box</p>
                 <div id="buttons">
                     <button onclick="setCameraView1(); updateParagraph1()">Overview</button>
@@ -40,10 +40,11 @@
                     <button onclick="setCameraView3(); updateParagraph3()">Augustinerplatz</button>
                     <button onclick="setCameraView4(); updateParagraph4()">Markstaette</button>
                     <button onclick="setCameraView5(); updateParagraph5()">St. Stephansplatz</button>
-                  </div>
-                  <div class="textContainer" >
-                    <p id="paragraphtexts">Welcome!</p>
                 </div>
+                <div class="textContainer scrollable-content">
+                    <p id="paragraphtexts" ></p>
+                </div>            
+            </div>
             </div>
         </div>
 
@@ -56,25 +57,95 @@
    
    <script>
         function updateParagraph1() {
-            const paragraph = document.getElementById("paragraphtexts");
-            paragraph.textContent = "The simulation domain is composed of 3 domains. Blue: Parent, Green: Child I, Red: Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const textContainer = document.querySelector(".textContainer");
+            // Clear existing content
+            textContainer.innerHTML = "";
+            // Create and set text content
+            const textContent = "The simulation domain is composed of 3 domains. Blue: Parent, Green: Child I, Red: Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. The simulation domain is composed of 3 domains. Blue: Parent, Green: Child I, Red: Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = textContent;
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = "./data/img/00_GE_Build3d.jpg";  // Replace with the actual path to your image
+            image.alt = "Simulation Domain Image"; // Alt text for the image
+            image.style.width = "100%"; // Adjust as needed
+            // Append the text and image to the textContainer
+            textContainer.appendChild(paragraph);
+            textContainer.appendChild(image);
         }
         function updateParagraph2() {
-            const paragraph = document.getElementById("paragraphtexts");
-            paragraph.textContent = "The Child II domain is 512x512m² and height of 256m. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const textContainer = document.querySelector(".textContainer");
+            // Clear existing content
+            textContainer.innerHTML = "";
+            // Create and set text content
+            const textContent = "The Child II domain is 512x512m² and height of 256m. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = textContent;
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = "./data/img/00_GE_Build3d.jpg";  // Replace with the actual path to your image
+            image.alt = "Simulation Domain Image"; // Alt text for the image
+            image.style.width = "100%"; // Adjust as needed
+            // Append the text and image to the textContainer
+            textContainer.appendChild(paragraph);
+            textContainer.appendChild(image);
         }
+
         function updateParagraph3() {
-            const paragraph = document.getElementById("paragraphtexts");
-            paragraph.textContent = "Augustinerplatz is located on South-West of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const textContainer = document.querySelector(".textContainer");
+            // Clear existing content
+            textContainer.innerHTML = "";
+            // Create and set text content
+            const textContent = "Augustinerplatz is located on South-West of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = textContent;
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = "./data/img/04_AU_Af.jpg";  // Replace with the actual path to your image
+            image.alt = "Simulation Domain Image"; // Alt text for the image
+            image.style.width = "100%"; // Adjust as needed
+            // Append the text and image to the textContainer
+            textContainer.appendChild(paragraph);
+            textContainer.appendChild(image);
         }
+
         function updateParagraph4() {
-            const paragraph = document.getElementById("paragraphtexts");
-            paragraph.textContent = "Markstaette is located on East of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const textContainer = document.querySelector(".textContainer");
+            // Clear existing content
+            textContainer.innerHTML = "";
+            // Create and set text content
+            const textContent = "Markstaette is located on East of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = textContent;
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = "./data/img/03_MA_Af.jpg";  // Replace with the actual path to your image
+            image.alt = "Simulation Domain Image"; // Alt text for the image
+            image.style.width = "100%"; // Adjust as needed
+            // Append the text and image to the textContainer
+            textContainer.appendChild(paragraph);
+            textContainer.appendChild(image);
         }
+
         function updateParagraph5() {
-            const paragraph = document.getElementById("paragraphtexts");
-            paragraph.textContent = "Stephansplatz is located on North-west of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const textContainer = document.querySelector(".textContainer");
+            // Clear existing content
+            textContainer.innerHTML = "";
+            // Create and set text content
+            const textContent = "Stephansplatz is located on North-west of Child II. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis imperdiet nisi, sed feugiat metus. Phasellus auctor aliquam pharetra. Integer ac ligula odio. Duis semper.";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = textContent;
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = "./data/img/02_ST_Af.jpg";  // Replace with the actual path to your image
+            image.alt = "Simulation Domain Image"; // Alt text for the image
+            image.style.width = "100%"; // Adjust as needed
+            // Append the text and image to the textContainer
+            textContainer.appendChild(paragraph);
+            textContainer.appendChild(image);
         }
+        // Call updateParagraph1 when the page loads
+        window.onload = updateParagraph1;
     </script>
 </body>
 

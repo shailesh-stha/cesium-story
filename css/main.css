@@ -28,7 +28,10 @@ body {
 
 .scrollable-content {
     overflow: auto;
-    max-height: 65vh; /* Adjust as needed */
+    margin-top: 25;
+    padding: 25;
+    background-color: aliceblue;
+    max-height: 64vh; /* Adjust as needed */
 }
 
 #buttons button {
@@ -48,4 +51,10 @@ body {
 
 #buttons button:hover {
     background-color: #ff3eb5;
+}
+
+.textContainer {
+    width: 100%; /* Adjust the width as per your design */
+    margin: 0 auto; /* Centers the container horizontally */
+    text-align: justify; /* Justify the text */
 }

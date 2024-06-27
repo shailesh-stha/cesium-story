@@ -1,46 +1,46 @@
 import { myAccessToken } from "./cesiumConfig.js";
 import { trees } from "./coordinates.js";
+import { addGeoJsonDataSource, addGeoJsonBuildingsDataSource } from "./cesiumFunctions.js";
+import { setCameraView, cameraViews } from "./cameraViews.js";
 
 Cesium.Ion.defaultAccessToken = myAccessToken;
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Cesium.Viewer("cesiumContainer", {
-  // globe: false, // false for Google Maps API
   terrain: Cesium.Terrain.fromWorldTerrain(),
-  animation: false, // Disable animation controls
-  timeline: false, // Disable timeline controls
-  geocoder: false, // Disable the search box
-  homeButton: false, // Enable or disable home button
-  sceneModePicker: false, // Enable or disable scene mode picker
-  baseLayerPicker: false, // Enable or disable base layer picker
-  navigationHelpButton: false, // Enable or disable navigation help button
-  infoBox: false, // Enable or disable info box
-  selectionIndicator: false, // Enable or disable selection indicator
-  creditContainer: document.createElement("div"), // Hide Cesium Ion logo
+  animation: false, 
+  timeline: false, 
+  geocoder: false, 
+  homeButton: false, 
+  sceneModePicker: false, 
+  baseLayerPicker: false, 
+  navigationHelpButton: false, 
+  infoBox: false, 
+  selectionIndicator: false, 
+  creditContainer: document.createElement("div"), 
 });
-
-// try {
-//   const tileset = await Cesium.createGooglePhotorealistic3DTileset();
-//   viewer.scene.primitives.add(tileset);
-// } catch (error) {
-//   console.log(`Failed to load tileset: ${error}`);
-// }
 
 // Directly set the camera at the given longitude, latitude, and height.
 viewer.camera.setView({
   destination: Cesium.Cartesian3.fromDegrees(
-    9.2260296,
-    47.617526094,
-    5216.312936
+    9.22501849,
+    47.623252188,
+    9000.0,
   ),
   orientation: {
-    heading: Cesium.Math.toRadians(323.0077053),
-    pitch: Cesium.Math.toRadians(-33.34587869),
+    heading: Cesium.Math.toRadians(320.3845946),
+    pitch: Cesium.Math.toRadians(-50.12191625),
     roll: 0.0,
   },
 });
 
-// load trees into the viewer
+// Load files
+var geoJsonUrl_aoi_parent = "data/geojson/aoi_parent.geojson";
+var geoJsonUrl_aoi_child_i = "data/geojson/aoi_child_i.geojson";
+var geoJsonUrl_aoi_child_ii = "data/geojson/aoi_child_ii.geojson";
+var geoJsonUrl_buildings = "data/geojson/buildings_clipped.geojson";
+let dataSource_aoi_parent, dataSource_aoi_child_i, dataSource_aoi_child_ii, dataSource_buildings;
+
 const url = {
   treeGlb: "./data/3d_model/tree_poly.glb",
 };
@@ -57,124 +57,51 @@ const createModel = (viewer, url, x, y) => {
   });
 };
 
-trees.features.forEach((feature) => {
-  createModel(
-    viewer,
-    url.treeGlb,
-    feature.geometry.coordinates[0],
-    feature.geometry.coordinates[1]
-  );
-});
-
-// Define function to display GeoJSON file
-function addGeoJsonDataSource(
-  viewer,
-  dataSourceUrl,
-  extrudedHeight,
-  polygonColor
-) {
-  // Load the GeoJSON file
-  return Cesium.GeoJsonDataSource.load(dataSourceUrl).then(function (
-    dataSource
-  ) {
-    // Add the GeoJSON data to the viewer
-    viewer.dataSources.add(dataSource);
-    // Get the entities from the data source
-    var entities = dataSource.entities.values;
-    // Loop through the entities and set the extruded height and polygon color
-    for (var i = 0; i < entities.length; i++) {
-      var entity = entities[i];
-      var polygon = entity.polygon;
-      if (polygon) {
-        polygon.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
-        polygon.extrudedHeight = extrudedHeight; // Set extruded height
-        polygon.extrudedHeightReference =
-          Cesium.HeightReference.RELATIVE_TO_GROUND;
-        polygon.material =
-          Cesium.Color.fromCssColorString(polygonColor).withAlpha(0.4); // Set polygon color
-      }
-    }
-    return dataSource;
+const addTrees = (viewer, trees) => {
+  trees.features.forEach((feature) => {
+    createModel(
+      viewer,
+      url.treeGlb,
+      feature.geometry.coordinates[0],
+      feature.geometry.coordinates[1]
+    );
   });
-}
-
-// Define function to display GeoJSON buildings data source
-function addGeoJsonBuildingsDataSource(viewer, dataSourceUrl, polygonColor) {
-  // Load the GeoJSON file
-  return Cesium.GeoJsonDataSource.load(dataSourceUrl).then(function (
-    dataSource
-  ) {
-    // Add the GeoJSON data to the viewer
-    viewer.dataSources.add(dataSource);
-    // Get the entities from the data source
-    var entities = dataSource.entities.values;
-    // Loop through the entities and set the extruded height and polygon color
-    for (var i = 0; i < entities.length; i++) {
-      var entity = entities[i];
-      var polygon = entity.polygon;
-      if (polygon) {
-        polygon.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
-        polygon.extrudedHeight = entity.properties.B_hoeh.getValue(); // Set extruded height
-        polygon.extrudedHeightReference =
-          Cesium.HeightReference.RELATIVE_TO_GROUND;
-        polygon.material =
-          Cesium.Color.fromCssColorString(polygonColor).withAlpha(1); // Set polygon color
-      }
-    }
-    return dataSource;
-  });
-}
-
-// Load files
-var geoJsonUrl_aoi_child_i = "data/geojson/aoi_child_i.geojson";
-var geoJsonUrl_aoi_child_ii = "data/geojson/aoi_child_ii.geojson";
-var geoJsonUrl_buildings = "data/geojson/buildings_clipped.geojson";
-
-let dataSource_aoi_child_i, dataSource_aoi_child_ii, dataSource_buildings;
+  return Promise.resolve(); // To ensure compatibility with Promise.all
+};
 
 Promise.all([
-  addGeoJsonDataSource(
-    viewer,
-    geoJsonUrl_aoi_child_i,
-    256 * 8,
-    "rgba(255, 0, 0)"
-  ).then((ds) => (dataSource_aoi_child_i = ds)),
-  addGeoJsonDataSource(
-    viewer,
-    geoJsonUrl_aoi_child_ii,
-    256 * 1,
-    "rgba(0, 255, 0)"
-  ).then((ds) => (dataSource_aoi_child_ii = ds)),
-  addGeoJsonBuildingsDataSource(
-    viewer,
-    geoJsonUrl_buildings,
-    "rgba(150, 150, 200)"
-  ).then((ds) => (dataSource_buildings = ds)),
+  addGeoJsonDataSource(viewer, geoJsonUrl_aoi_parent, 256 * 16, "rgba(0, 0, 255)").then((ds) => (dataSource_aoi_parent = ds)),
+  addGeoJsonDataSource(viewer, geoJsonUrl_aoi_child_i, 256 * 8, "rgba(0, 255, 0)").then((ds) => (dataSource_aoi_child_i = ds)),
+  addGeoJsonDataSource(viewer, geoJsonUrl_aoi_child_ii, 256 * 1, "rgba(255, 0, 0)").then((ds) => (dataSource_aoi_child_ii = ds)),
+  addGeoJsonBuildingsDataSource(viewer,geoJsonUrl_buildings, "rgba(240, 240, 230)").then((ds) => (dataSource_buildings = ds)),
+  addTrees(viewer, trees)
 ]).then(() => {
-  setCameraView1(); // Set initial camera view once data sources are loaded
+  setCameraView1();
 });
 
 // Function to set the first camera view
 function setCameraView1() {
+  dataSource_aoi_parent.show = true;
   dataSource_aoi_child_i.show = true;
   dataSource_aoi_child_ii.show = true;
   dataSource_buildings.show = false;
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(
-      9.2260296,
-      47.617526094,
-      5216.312936
+      9.22501849,
+      47.623252188,
+      9000.0,
     ),
     orientation: {
-      heading: Cesium.Math.toRadians(323.0077053),
-      pitch: Cesium.Math.toRadians(-33.34587869),
-      roll: 0.002471124,
+      heading: Cesium.Math.toRadians(320.3845946),
+      pitch: Cesium.Math.toRadians(-50.12191625),
+      roll: 0.0,
     },
   });
 }
 
 // Function to set the second camera view
 function setCameraView2() {
+  dataSource_aoi_parent.show = false;
   dataSource_aoi_child_i.show = false;
   dataSource_aoi_child_ii.show = true;
   dataSource_buildings.show = true;
@@ -193,26 +120,8 @@ function setCameraView2() {
 }
 
 // Function to set the third camera view
-function setCameraView3_1() {
-  dataSource_aoi_child_i.show = false;
-  dataSource_aoi_child_ii.show = false;
-  dataSource_buildings.show = true;
-  viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(
-      9.175094957,
-      47.65932849,
-      577.129118408
-    ),
-    orientation: {
-      heading: Cesium.Math.toRadians(277.1502153),
-      pitch: Cesium.Math.toRadians(-42.7021187399),
-      roll: 0.0,
-    },
-  });
-}
-
-// Function to set the third camera view
-function setCameraView3_2() {
+function setCameraView3() {
+  dataSource_aoi_parent.show = false;
   dataSource_aoi_child_i.show = false;
   dataSource_aoi_child_ii.show = false;
   dataSource_buildings.show = true;
@@ -232,6 +141,7 @@ function setCameraView3_2() {
 
 // Function to set the fourth camera view
 function setCameraView4() {
+  dataSource_aoi_parent.show = false;
   dataSource_aoi_child_i.show = false;
   dataSource_aoi_child_ii.show = false;
   dataSource_buildings.show = true;
@@ -251,6 +161,7 @@ function setCameraView4() {
 
 // Function to set the third camera view
 function setCameraView5() {
+  dataSource_aoi_parent.show = false;
   dataSource_aoi_child_i.show = false;
   dataSource_aoi_child_ii.show = false;
   dataSource_buildings.show = true;
@@ -271,6 +182,23 @@ function setCameraView5() {
 // Attach the functions to the global window object
 window.setCameraView1 = setCameraView1;
 window.setCameraView2 = setCameraView2;
-window.setCameraView3_1 = setCameraView3_1;
+window.setCameraView3 = setCameraView3;
 window.setCameraView4 = setCameraView4;
 window.setCameraView5 = setCameraView5;
+
+// Function to log the camera's current position and orientation
+function logCameraPosition() {
+  const camera = viewer.camera;
+  const position = camera.positionCartographic;
+  const heading = Cesium.Math.toDegrees(camera.heading);
+  const pitch = Cesium.Math.toDegrees(camera.pitch);
+  const roll = Cesium.Math.toDegrees(camera.roll);
+
+  console.log(`Position: (${Cesium.Math.toDegrees(position.longitude)}, ${Cesium.Math.toDegrees(position.latitude)}, ${position.height})`);
+  console.log(`Heading: ${heading}`);
+  console.log(`Pitch: ${pitch}`);
+  console.log(`Roll: ${roll}`);
+}
+
+// Event listener for camera changes
+viewer.camera.changed.addEventListener(logCameraPosition);

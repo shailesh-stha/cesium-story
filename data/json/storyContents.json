@@ -1,0 +1,30 @@
+{
+    "title1": {
+        "para1": "The simulation domain is located in Konstanz, Germany, a city with an area of approximately 54.11 km² and an elevation of 405 meters above sea level. Konstanz is situated at the western end of Lake Constance and borders Kreuzlingen, Switzerland.",
+        "para2": "The simulation's overall domain encompasses a significant portion of southern Konstanz and the northern part of Kreuzlingen. This domain (represented in blue) spans 4096 meters by 4096 meters horizontally and 2048 meters vertically. To optimize computational efficiency, the domain is subdivided into two smaller sections with finer resolution.",
+        "para3": "The intermediate domain (represented in green) covers an area of 2048 meters by 2048 meters horizontally and 2048 meters vertically. Within this, the smallest domain (represented in red) measures 512 meters by 512 meters horizontally and 256 meters vertically. These subdivisions allow for more detailed simulations in critical areas while managing overall computational demand effectively."
+    },
+    "title2": {
+        "para1": "The smallest domain contains all the area of interst for Urban heat island (UHI) study in Altstadt, Konstanz. As the population is concentrated in this area along side many tourist attractions located in this area, three locations are taken in to considersation for the study of urban planning measures and their impact in adverse microclimate metigation."
+    },
+    "title3": {
+        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+    },
+    "title4": {
+        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+    },
+    "title5": {
+        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+    },
+    "title6": {
+        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+    }
+}

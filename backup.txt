@@ -1,0 +1,8 @@
+adding google3dtile to viewer
+
+// try {
+//   const tileset = await Cesium.createGooglePhotorealistic3DTileset();
+//   viewer.scene.primitives.add(tileset);
+// } catch (error) {
+//   console.log(`Failed to load tileset: ${error}`);
+// }

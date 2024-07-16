@@ -1,0 +1,5 @@
+p[id^="description"] {
+    /* Add your desired CSS properties here */
+    font-size: 14px;
+    padding: 0px;
+}

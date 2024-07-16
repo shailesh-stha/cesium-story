@@ -1,0 +1,117 @@
+/* Main body and Map css */
+.cesiumBodyContainer {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 25px;
+    /* margin: 10px; */
+}
+
+#cesiumMapContainer {
+    width: 100%;
+    height: 75vh;
+    padding-bottom: 10px;
+}
+
+/* Story css */
+.storyHeaderContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #cbcbcb, #e4e4e4);
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.storyHeader {
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    /* border-left: 0.5px solid rgb(180, 180, 180);
+    border-right: 0.5px solid rgb(180, 180, 180); */
+    font-weight: bold;
+}
+
+.storyHeader a:hover {
+    color: rgb(255, 62, 181);
+    font-weight: bold;
+}
+
+/* content */
+.storyContentContainer {
+    padding-top: 10px;
+    height: 62.5vh;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 10px;
+    text-align: justify;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 25px; /* Offset for smooth scrolling */
+    margin-top: -20px; /* Offset for smooth scrolling */
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-image:hover {
+    transform: translateX(-50%) scale(1.25);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.content-image {
+    width: 70%;
+    height: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid grey;
+}

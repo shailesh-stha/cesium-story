@@ -40,9 +40,9 @@ const cesiumCameraViews = {
     },
   },
   view6: {
-    destination: Cesium.Cartesian3.fromDegrees(9.180945720256407, 47.65696183674993, 750.4898171031892),
+    destination: Cesium.Cartesian3.fromDegrees(9.17782483150954, 47.658252331210264, 386.19861199221947),
     orientation: {
-      heading: Cesium.Math.toRadians(317.5029555050698),
+      heading: Cesium.Math.toRadians(317.50295550506956),
       pitch: Cesium.Math.toRadians(-47.482338332716125),
       roll: 0,
     },

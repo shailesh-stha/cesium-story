@@ -5,20 +5,16 @@
         "para3": "The intermediate domain (represented in green) covers an area of 2048 meters by 2048 meters horizontally and 2048 meters vertically. Within this, the smallest domain (represented in red) measures 512 meters by 512 meters horizontally and 256 meters vertically. These subdivisions allow for more detailed simulations in critical areas while managing overall computational demand effectively."
     },
     "title2": {
-        "para1": "The smallest domain contains all the area of interst for Urban heat island (UHI) study in Altstadt, Konstanz. As the population is concentrated in this area along side many tourist attractions located in this area, three locations are taken in to considersation for the study of urban planning measures and their impact in adverse microclimate metigation."
+        "para1": "The smallest domain (red) covers a significant portion of Altstadt, Konstanz and all the all the three area of interst for Urban heat island (UHI). The area of interest were chosen based upon the study of the concentration of population, areas for tourust attractions as well as different indices gathered from satellite data. Based on different variables and discussion with the city of Konstanz, three locations are taken in to considersation for the study of urban planning measures and their impact in adverse microclimate metigation."
     },
     "title3": {
-        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
-        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
-        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+        "para1": "The domain size considered for Augustinerplatz is 130m x 130m, where six Acer trees are added for the test simulation. Since Augustinerplatz lies above an underground parking, a planting bed of size 16m² is also added below each tree. In addition to the trees, the building on the southern side of Augustinerplatz is tested with a green wall. This comprehensive approach aims to enhance the environmental quality and aesthetic appeal of the area."
     },
     "title4": {
-        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
-        "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
-        "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
+        "para1": "Markstätte is one of the busiest areas in Konstanz. Hence, after careful study and discussion with the city of Konstanz, nine trees were added on the eastern side of the area. In this case, the domain size is 230m x 80m, and the tree species considered is Quercus. Similar to Augustinerplatz, a planting bed of 167.17m² is added for the test simulation. This initiative aims to improve the environmental conditions and provide a green oasis in the bustling urban area."
     },
     "title5": {
-        "para1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
+        "para1": "For Stephansplatz, a unique approach was taken into consideration. Thirteen Celtis trees were added, along with a water fountain of size 15m x 10m for the test simulation. Since there are already some trees in this area, the tree species considered for the new additions are the same as the existing ones. This combination of greenery and a water feature aims to enhance the aesthetic and environmental quality of Stephansplatz, creating a more inviting and pleasant space for visitors.",
         "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas.",
         "para3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus nec mi vulputate ultrices. Vestibulum ac lacus rhoncus, egestas."
     },

@@ -80,9 +80,9 @@ h1 {
     transition: opacity 0.5s ease-in-out;
 }
 
-.content-image:hover {
+/* .content-image:hover {
     transform: translateX(-50%) scale(1.25);
-}
+} */
 
 .carousel-button {
     position: absolute;

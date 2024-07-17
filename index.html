@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/mainStyles.css">
     <link rel="stylesheet" href="./css/cesiumStyles.css">
     <link rel="stylesheet" href="./css/storyStyles.css">
-    <title>Cesium-Story: Munich</title>
+    <title>Study of UHI: Konstanz</title>
 </head>
 
 <body>
@@ -40,12 +40,12 @@
             <div class="col-12 col-md-5 bg-white">
                 <h3 style="text-align: center;">_______________</h3>
                 <div class="storyHeaderContainer">
-                    <div class="storyHeader"><a href="#header1" onclick="setCameraView('view1'); toggleEntities('showAll')">Domain Overview</a></div>
-                    <div class="storyHeader"><a href="#header2" onclick="setCameraView('view2'); toggleEntities('hideAllButII')">Hotspots</a></div>
-                    <div class="storyHeader"><a href="#header3" onclick="setCameraView('view3'); toggleEntities('hideAll')">Augustinerplatz</a></div>
-                    <div class="storyHeader"><a href="#header4" onclick="setCameraView('view4'); toggleEntities('hideAll')">Markstaette</a></div>
-                    <div class="storyHeader"><a href="#header5" onclick="setCameraView('view5'); toggleEntities('hideAll')">Stephansplatz</a></div>
-                    <div class="storyHeader"><a href="#header6" onclick="setCameraView('view6'); toggleEntities('hideAll')">Simulation Scenarios</a></div>
+                    <div class="storyHeader"><a href="#header1" onclick="setCameraView('view1'); toggleEntities('showAOIs')">Domain Overview</a></div>
+                    <div class="storyHeader"><a href="#header2" onclick="setCameraView('view2'); toggleEntities('showOnlyII')">Hotspots</a></div>
+                    <div class="storyHeader"><a href="#header3" onclick="setCameraView('view3'); toggleEntities('showUHIElements')">Augustinerplatz</a></div>
+                    <div class="storyHeader"><a href="#header4" onclick="setCameraView('view4'); toggleEntities('showUHIElements')">Markstaette</a></div>
+                    <div class="storyHeader"><a href="#header5" onclick="setCameraView('view5'); toggleEntities('showUHIElements')">Stephansplatz</a></div>
+                    <div class="storyHeader"><a href="#header6" onclick="setCameraView('view6'); toggleEntities('showUHIandOrbit')">Scenarios</a></div>
                 </div>
                 <div class="storyContentContainer">
                     <div class="text-content">
@@ -54,36 +54,67 @@
                         <p id="description11" data-first-key="title1" data-second-key="para1"></p>
                         <p id="description12" data-first-key="title1" data-second-key="para2"></p>
                         <p id="description13" data-first-key="title1" data-second-key="para3"></p>
-                        <img src="./data/img/Location_Overview.jpg" class="content-image" alt="Location Overview">
+                        <div class="carousel" id="carousel0">
+                            <button class="carousel-button prev" onclick="prevSlide('carousel0')">&#10094;</button>
+                            <div class="carousel-images">
+                                <img src="./data/img/Location_Overview.jpg" class="carousel-image" alt="au_be">
+                                <img src="./data/img/ALKIS_Classification.jpg" class="carousel-image" alt="au_af">
+                            </div>
+                            <button class="carousel-button next" onclick="nextSlide('carousel0')">&#10095;</button>
+                        </div>
 
                         <!-- Hotspots -->
                         <h1 id="header2">Hotspots</h1>
                         <p id="description21" data-first-key="title2" data-second-key="para1"></p>
-                        <div class="carousel">
-                            <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+                        <div class="carousel" id="carousel1">
+                            <button class="carousel-button prev" onclick="prevSlide('carousel1')">&#10094;</button>
                             <div class="carousel-images">
-                                <img src="./data/img/02_ST_Be.jpg" class="carousel-image" alt="Image 1">
-                                <img src="./data/img/03_MA_Be.jpg" class="carousel-image" alt="Image 2">
-                                <img src="./data/img/04_AU_Be.jpg" class="carousel-image" alt="Image 3">
+                                <img src="./data/img/Indices.jpg" class="carousel-image" alt="Image 1">
+                                <img src="./data/img/LCZ.jpg" class="carousel-image" alt="Image 2">
+                                <img src="./data/img/hotspots.jpg" class="carousel-image" alt="Image 3">
                             </div>
-                            <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+                            <button class="carousel-button next" onclick="nextSlide('carousel1')">&#10095;</button>
                         </div>
-                        
+
                         <!-- Augustinerplatz -->
                         <h1 id="header3">Augustinerplatz</h1>
                         <p id="description31" data-first-key="title3" data-second-key="para1"></p>
-                        <p id="description32" data-first-key="title3" data-second-key="para2"></p>
-                        <p id="description33" data-first-key="title3" data-second-key="para3"></p>
+                        <!-- <p id="description32" data-first-key="title3" data-second-key="para2"></p> -->
+                        <div class="carousel" id="carousel2">
+                            <button class="carousel-button prev" onclick="prevSlide('carousel2')">&#10094;</button>
+                            <div class="carousel-images">
+                                <img src="./data/img/04_AU_Be.jpg" class="carousel-image" alt="au_be">
+                                <img src="./data/img/04_AU_Af.jpg" class="carousel-image" alt="au_af">
+                            </div>
+                            <button class="carousel-button next" onclick="nextSlide('carousel2')">&#10095;</button>
+                        </div>
 
+                        <!-- Markstaette -->
                         <h1 id="header4">Markstaette</h1>
                         <p id="description41" data-first-key="title4" data-second-key="para1"></p>
-                        <p id="description42" data-first-key="title4" data-second-key="para2"></p>
-                        <p id="description43" data-first-key="title4" data-second-key="para3"></p>
+                        <div class="carousel" id="carousel3">
+                            <button class="carousel-button prev" onclick="prevSlide('carousel3')">&#10094;</button>
+                            <div class="carousel-images">
+                                <img src="./data/img/03_MA_Be.jpg" class="carousel-image" alt="au_be">
+                                <img src="./data/img/03_MA_Af.jpg" class="carousel-image" alt="au_af">
+                            </div>
+                            <button class="carousel-button next" onclick="nextSlide('carousel3')">&#10095;</button>
+                        </div>
 
+                        <!-- Stephansplatz -->
                         <h1 id="header5">Stephansplatz</h1>
                         <p id="description51" data-first-key="title5" data-second-key="para1"></p>
-                        <p id="description52" data-first-key="title5" data-second-key="para2"></p>
-                        <p id="description53" data-first-key="title5" data-second-key="para3"></p>
+                        <div class="carousel" id="carousel4">
+                            <button class="carousel-button prev" onclick="prevSlide('carousel4')">&#10094;</button>
+                            <div class="carousel-images">
+                                <img src="./data/img/02_ST_Be.jpg" class="carousel-image" alt="au_be">
+                                <img src="./data/img/02_ST_Af.jpg" class="carousel-image" alt="au_af">
+                            </div>
+                            <button class="carousel-button next" onclick="nextSlide('carousel4')">&#10095;</button>
+                        </div>
+
+                        <!-- Scenarios -->
+                        <h1 id="header5">Scenarios</h1>
 
                     </div>
                 </div>

@@ -15,50 +15,107 @@ function setCameraView(view) {
 // Initialize camera view
 viewer.camera.setView(cesiumCameraViews.view1);
 // Call functions
-loadLod2Buildings(viewer);
+const load2Buildings = loadLod2Buildings(viewer);
 
 // Celtis: Stepna, Quercus: Mark, Acer: Aug
 addTrees(viewer, { ...trees, features: trees.features.filter(feature => feature.properties.T_spec === 'Acer') }, 'treeWithoutBed');
 addTrees(viewer, { ...trees, features: trees.features.filter(feature => feature.properties.T_spec === 'Quercus') }, 'treeWithoutBed');
 addTrees(viewer, { ...trees, features: trees.features.filter(feature => feature.properties.T_spec === 'Celtis') }, 'treeWithoutBed');
-// setEntitiesVisibility(viewer, treeUrl.treeGlb, false);
+setEntitiesVisibility(viewer, treeUrl.treeWithoutBed, false);
 
 // Load files
 const geoJsonUrl = {
   aoi_parent: "./data/geojson/aoi_parent.geojson",
   aoi_child_i: "./data/geojson/aoi_child_i.geojson",
   aoi_child_ii: "./data/geojson/aoi_child_ii.geojson",
+  uhi: "./data/geojson/uhi.geojson",
 };
 
-let dataSource_aoi_parent, dataSource_aoi_child_i, dataSource_aoi_child_ii;
+let dataSource_aoi_parent, dataSource_aoi_child_i, dataSource_aoi_child_ii, dataSource_uhi;
 Promise.all([
   addGeoJsonDataSource(viewer, geoJsonUrl.aoi_parent, 128 * 16, "rgba(0, 0, 255)").then((ds) => (dataSource_aoi_parent = ds)),
   addGeoJsonDataSource(viewer, geoJsonUrl.aoi_child_i, 128 * 8, "rgba(0, 255, 0)").then((ds) => (dataSource_aoi_child_i = ds)),
   addGeoJsonDataSource(viewer, geoJsonUrl.aoi_child_ii, 128 * 2, "rgba(255, 0, 0)").then((ds) => (dataSource_aoi_child_ii = ds)),
+  addGeoJsonDataSource(viewer, geoJsonUrl.uhi, 32 * 2, "rgba(255, 255, 0)").then((ds) => (dataSource_uhi = ds)),
 ]).then(() => {
+  dataSource_uhi.show = false;
   setCameraView;
-});
+})
+// add image to cesium
+const layers = viewer.scene.imageryLayers;
+const baseTemperature = Cesium.ImageryLayer.fromProviderAsync(
+  Cesium.SingleTileImageryProvider.fromUrl(
+    "./data/img/_base.png",
+    {
+      rectangle: Cesium.Rectangle.fromDegrees(
+        9.171829841387,
+        47.65887332060,
+        9.1786643808,
+        47.66349054756
+      ),
+    }
+  )
+);
+layers.add(baseTemperature);
+const testTemperature = Cesium.ImageryLayer.fromProviderAsync(
+  Cesium.SingleTileImageryProvider.fromUrl(
+    "./data/img/_test.png",
+    {
+      rectangle: Cesium.Rectangle.fromDegrees(
+        9.171829841387,
+        47.65887332060,
+        9.1786643808,
+        47.66349054756
+      ),
+    }
+  )
+);
+layers.add(testTemperature);
+
+baseTemperature.show = false;
+baseTemperature.alpha = 0.75;
+testTemperature.show = false;
+testTemperature.alpha = 0.75;
 
 function toggleEntities(action) {
   switch (action) {
-    case 'showAll':
+    case 'showAOIs':
       dataSource_aoi_parent.show = true;
       dataSource_aoi_child_i.show = true;
       dataSource_aoi_child_ii.show = true;
-      setEntitiesVisibility(viewer, treeUrl.treeGlb, false);
+      dataSource_uhi.show = false;
+      setEntitiesVisibility(viewer, treeUrl.treeWithoutBed, false);
+      baseTemperature.show = false;
       break;
-    case 'hideAllButII':
+    case 'showOnlyII':
       dataSource_aoi_parent.show = false;
       dataSource_aoi_child_i.show = false;
       dataSource_aoi_child_ii.show = true;
-      setEntitiesVisibility(viewer, treeUrl.treeGlb, true);
+      dataSource_uhi.show = false;
+      setEntitiesVisibility(viewer, treeUrl.treeWithoutBed, true);
+      baseTemperature.show = false;
       break;
-    case 'hideAll':
+    case 'showUHIElements':
       dataSource_aoi_parent.show = false;
       dataSource_aoi_child_i.show = false;
       dataSource_aoi_child_ii.show = false;
-      setEntitiesVisibility(viewer, treeUrl.treeGlb, true);
+      dataSource_uhi.show = false;
+      setEntitiesVisibility(viewer, treeUrl.treeWithoutBed, true);
+      baseTemperature.show = true;
+      baseTemperature.alpha = 0.5;
       break;
+    case 'showUHIandOrbit':
+      dataSource_aoi_parent.show = false;
+      dataSource_aoi_child_i.show = false;
+      dataSource_aoi_child_ii.show = false;
+      dataSource_uhi.show = true;
+      setEntitiesVisibility(viewer, treeUrl.treeWithoutBed, true);
+      baseTemperature.show = false;
+      baseTemperature.alpha = 0.5;
+      // Orbit this point
+      viewer.clock.onTick.addEventListener(function (clock) {
+        viewer.scene.camera.rotateRight(0);
+      });
     default:
       console.error('Invalid action: ' + action);
   }
@@ -66,16 +123,6 @@ function toggleEntities(action) {
 
 window.setCameraView = setCameraView;
 window.toggleEntities = toggleEntities;
-
-
-
-
-
-
-
-
-
-
 
 // Get camera info
 var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);

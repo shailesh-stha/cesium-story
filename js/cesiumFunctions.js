@@ -64,7 +64,7 @@ export const addTrees = (viewer, trees, treeType) => {
       model: {
         uri: treeUrl[treeType],
         heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-        scale: 0.75,
+        scale: 1,
       },
     });
   });
@@ -76,4 +76,10 @@ export const setEntitiesVisibility = (viewer, name, visible) => {
       entity.show = visible;
     }
   });
+};
+
+export const toggleVisibility = (entity, show) => {
+  if (entity) {
+    entity.show = show;
+  }
 };
